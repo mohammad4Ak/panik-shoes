@@ -19,11 +19,13 @@ export default function ProductionTracking() {
             setProductionLogs([...productionLogs, {
                 id: productionLogs.length + 1,
                 date: new Date().toISOString().split('T')[0],
-                ...newLog
+                product: newLog.product,
+                quantity: parseInt(newLog.quantity) // Ensure quantity is a number
             }])
             setNewLog({ product: '', quantity: '' })
         }
     }
+
 
     return (
         <Card className="w-full">

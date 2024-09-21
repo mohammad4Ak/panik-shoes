@@ -16,26 +16,21 @@ import {
     ChevronLeft
 } from 'lucide-react'
 import {Button} from "@/components/ui/button"
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card"
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card"
 import {ThemeToggle} from "@/components/theme-toggle"
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
 } from "@/components/ui/sheet"
 import ProductCatalog from './products/page'
 import OrderManagement from './orders/page'
 import ProductionTracking from './production/page'
 import InventoryManagement from './inventory/page'
 import SalesOverview from './sales/page'
-import AddProduct from '@/components/add-product'
 
 export default function AdminDashboard() {
     const [activePage, setActivePage] = useState('dashboard')
-    const [showAddProduct, setShowAddProduct] = useState(false)
+    const [,] = useState(false)
     const [isSidePanelOpen, setIsSidePanelOpen] = useState(true)
     const [isMobile, setIsMobile] = useState(false)
 
@@ -130,6 +125,8 @@ export default function AdminDashboard() {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const NavLink = ({href, onClick, children, isActive}) => (
         <a
             href={href}

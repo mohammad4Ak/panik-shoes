@@ -1,5 +1,4 @@
 import { Package, ShoppingBag, BarChart } from 'lucide-react'
-import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 
 interface SidePanelProps {
@@ -11,6 +10,8 @@ interface SidePanelProps {
 }
 
 export function SidePanel({ isOpen, onClose, activePage, setActivePage, isMobile }: SidePanelProps) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const NavLink = ({ href, onClick, children, isActive }) => (
         <a
             href={href}

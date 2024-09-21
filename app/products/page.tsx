@@ -1,11 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import AddProduct from '@/components/add-product'
 import ProductGrid from "@/components/product-grid"
 import {products,products2} from "@/data/productData";
 

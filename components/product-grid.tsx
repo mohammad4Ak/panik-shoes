@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import NextImage from 'next/image';
 import { Product } from "@/data/productData";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";  // ShadCN dialog imports
+import { Dialog, DialogContent } from "@/components/ui/dialog";  // ShadCN dialog imports
 
 interface ProductCardProps {
     product: Product;

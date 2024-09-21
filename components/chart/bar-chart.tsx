@@ -68,9 +68,7 @@ export function Component() {
                 <div className="flex gap-2 font-medium leading-none">
                     <TrendingUp className="h-4 w-4"/>افزایش 5.2 درصدی در این ماه
                 </div>
-                <div className="leading-none text-muted-foreground">
-                    نمودار مجموع فروش در 6 ماه اخیر
-                </div>
+                <div className="leading-none text-muted-foreground">نمودار مجموع فروش در 6 ماه اخیر</div>
             </CardFooter>
         </Card>
     )

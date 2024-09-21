@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertTriangle } from 'lucide-react'
 
 export default function InventoryManagement() {
-    const [inventory, setInventory] = useState([
+    const [inventory] = useState([
         { id: 1, name: 'اسپرت وان', quantity: 20, threshold: 10 },
         { id: 2, name: 'دواسمال', quantity: 15, threshold: 8 },
         { id: 3, name: 'کالج', quantity: 25, threshold: 12 },

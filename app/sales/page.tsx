@@ -4,7 +4,6 @@ import {useState} from 'react'
 import {Button} from "@/components/ui/button"
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table"
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts'
 import {Component as CustomBarChart} from '@/components/chart/bar-chart'
 
 export default function SalesOverview() {
