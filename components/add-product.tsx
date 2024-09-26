@@ -1,97 +1,101 @@
-"use client"
+'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
 
-interface AddProductProps {
-    onProductAdded: () => void;
-}
+export function AddProductDialog() {
+    const [open, setOpen] = useState(false)
+    const [sizes, setSizes] = useState<string[]>([])
+    const [newSize, setNewSize] = useState('')
 
-export default function AddProduct({ onProductAdded }: AddProductProps) {
-    const [product, setProduct] = useState({
-        name: '',
-        description: '',
-        price: '',
-        stock: ''
-    })
-    const [notification, setNotification] = useState<string | null>(null)
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target
-        setProduct(prev => ({ ...prev, [name]: value }))
+    const handleAddSize = () => {
+        if (newSize && !sizes.includes(newSize)) {
+            setSizes([...sizes, newSize])
+            setNewSize('')
+        }
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        // Here you would typically send the data to your backend
-        console.log('Submitting product:', product)
-        setNotification(`تمت إضافة ${product.name} إلى المخزون.`)
-        // Reset form
-        setProduct({ name: '', description: '', price: '', stock: '' })
-        // Notify parent component that a product has been added
-        onProductAdded()
-        // Clear notification after 3 seconds
-        setTimeout(() => setNotification(null), 3000)
+    const handleRemoveSize = (sizeToRemove: string) => {
+        setSizes(sizes.filter(size => size !== sizeToRemove))
+    }
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault()
+        // Handle form submission here
+        setOpen(false)
     }
 
     return (
-        <div dir="rtl">
-            {notification && (
-                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                    <span className="block sm:inline">{notification}</span>
-                </div>
-            )}
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <Label htmlFor="name">نام</Label>
-                    <Input
-                        id="name"
-                        name="name"
-                        value={product.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <Label htmlFor="description">توضیحات</Label>
-                    <Textarea
-                        id="description"
-                        name="description"
-                        value={product.description}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <Label htmlFor="price">قیمت</Label>
-                    <Input
-                        id="price"
-                        name="price"
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        value={product.price}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <Label htmlFor="stock">تعداد</Label>
-                    <Input
-                        id="stock"
-                        name="stock"
-                        type="number"
-                        min="0"
-                        value={product.stock}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <Button type="submit">ثبت</Button>
-            </form>
-        </div>
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+                <Button>افزودن محصول جدید</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]" dir="rtl">
+                <DialogHeader>
+                    <DialogTitle className="text-right mt-4">افزودن محصول جدید</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="name" className="text-right block">نام کفش</Label>
+                        <Input id="name" placeholder="نام کفش را وارد کنید" />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="code" className="text-right block">کد محصول</Label>
+                        <Input id="code" placeholder="کد محصول را وارد کنید" />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="picture" className="text-right block">تصویر محصول</Label>
+                        <div className="flex items-center justify-between p-2 border rounded-md bg-background">
+                            <span className="text-sm text-muted-foreground">No file chosen</span>
+                            <Label htmlFor="picture" className="cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-2 rounded-md text-sm">
+                                Choose File
+                            </Label>
+                            <Input id="picture" type="file" accept="image/*" className="hidden" />
+                        </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="count" className="text-right block">تعداد موجودی</Label>
+                        <Input id="count" type="number" min="0" placeholder="تعداد موجودی را وارد کنید" />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label className="text-right block">سایزهای موجود</Label>
+                        <div className="flex flex-wrap justify-center gap-2">
+                            {sizes.map(size => (
+                                <span key={size} className="relative max-w-[70%] rounded-3xl px-2 py-1 bg-[#f4f4f4] dark:text-slate-900 dark:bg-token-main-surface-secondary">
+                  {size}
+                                    <button type="button" onClick={() => handleRemoveSize(size)} className="text-destructive font-bold">
+                    ×
+                  </button>
+                </span>
+                            ))}
+                        </div>
+                        <div className="flex gap-2">
+                            <Input
+                                value={newSize}
+                                onChange={(e) => setNewSize(e.target.value)}
+                                placeholder="سایز جدید"
+                                className="flex-grow"
+                            />
+                            <Button type="button" onClick={handleAddSize}>افزودن</Button>
+                        </div>
+                    </div>
+
+                    <Button type="submit" className="w-full">ثبت محصول</Button>
+                </form>
+            </DialogContent>
+        </Dialog>
     )
 }

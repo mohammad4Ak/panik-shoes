@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import NextImage from 'next/image';
 import { Product } from "@/data/productData";
-import { Dialog, DialogContent } from "@/components/ui/dialog";  // ShadCN dialog imports
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface ProductCardProps {
     product: Product;
@@ -74,7 +74,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                                 width={800}
                                 height={600}
                                 objectFit="contain"
-                                className="w-full h-auto"
+                                className="rounded w-full h-auto"
                             />
                         </div>
                     </DialogContent>

@@ -60,13 +60,13 @@ export default function ProductCatalog() {
                 </Table>
             </CardContent>*/}
             <CardHeader>
-                <CardTitle>محصولات</CardTitle>
+                <CardTitle>محصولات چینی</CardTitle>
             </CardHeader>
             <CardContent>
                 <ProductGrid products={products2}/>
             </CardContent>
             <CardHeader>
-                <CardTitle>سایر پوخ پوسور ها</CardTitle>
+                <CardTitle>تولیدات داخلی</CardTitle>
             </CardHeader>
             <CardContent>
                 <ProductGrid products={products}/>
