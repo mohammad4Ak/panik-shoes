@@ -12,10 +12,10 @@ import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger} from "@
 
 export default function InventoryManagement() {
     const [inventory] = useState([
-        {id: 1, name: 'اسپرت وان', quantity: 20, threshold: 10, image: '/images/products/5.webp'},
-        {id: 2, name: 'دواسمال', quantity: 15, threshold: 8, image: '/images/products/6.webp'},
-        {id: 3, name: 'کالج', quantity: 25, threshold: 12, image: '/images/products/7.webp'},
-        {id: 4, name: 'نیم بوت', quantity: 5, threshold: 12, image: '/images/products/8.webp'},
+        {id: 1, name: 'اسپرت وان', quantity: 20, threshold: 10, image: 'images/products/5.webp'},
+        {id: 2, name: 'دواسمال', quantity: 15, threshold: 8, image: 'images/products/6.webp'},
+        {id: 3, name: 'کالج', quantity: 25, threshold: 12, image: 'images/products/7.webp'},
+        {id: 4, name: 'نیم بوت', quantity: 5, threshold: 12, image: 'images/products/8.webp'},
     ])
     const [searchTerm, setSearchTerm] = useState('')
 
